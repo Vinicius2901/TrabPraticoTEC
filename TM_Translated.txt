@@ -1,0 +1,49 @@
+0 0 S R sr0
+0 1 S R sr1
+0 _ S R mf
+
+sr0 0 0 R sr0
+sr0 1 0 R sr1
+sr0 _ 0 R mf
+
+sr1 0 1 R sr0
+sr1 1 1 R sr1
+sr1 _ 1 R mf
+
+mf _ F L ini
+ini 0 0 L ini
+ini 1 1 L ini
+ini S S R 0S
+
+
+0S S S R ltc_0
+0S F _ R rtc_0
+0S _ _ L 0S
+ltc_0 0 _ R sr0_0
+ltc_0 1 _ R sr1_0
+ltc_0 _ _ R sr__0
+ltc_0 F _ R srF_0
+
+sr0_0 0 0 R sr0_0
+sr0_0 1 0 R sr1_0
+sr0_0 _ 0 R sr__0
+sr0_0 F 0 R srF_0
+
+sr1_0 0 1 R sr0_0
+sr1_0 1 1 R sr1_0
+sr1_0 _ 1 R sr__0
+sr1_0 F 1 R srF_0
+
+sr__0 0 _ R sr0_0
+sr__0 1 _ R sr1_0
+sr__0 _ _ R sr__0
+sr__0 F _ R srF_0
+
+srF_0 _ F L ini_0
+
+ini_0 _ _ L ini_0
+ini_0 0 0 L ini_0
+ini_0 1 1 L ini_0
+ini_0 S S R 0S
+
+rtc_0 _ F L 0S
