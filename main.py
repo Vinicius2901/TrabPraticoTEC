@@ -3,9 +3,9 @@ import sys
 
 def initialize_DInf(f_out):
     # Marca símbolo inicial
-    f_out.write("0 0 S R sr0\n")
-    f_out.write("0 1 S R sr1\n")
-    f_out.write("0 _ S R 0I\n")
+    f_out.write("0 0 # R sr0\n")
+    f_out.write("0 1 # R sr1\n")
+    f_out.write("0 _ # R 0I\n")
     f_out.write("\n")
     
     # Shift Right de zeros
@@ -23,14 +23,14 @@ def initialize_DInf(f_out):
     # Volta o cabeçote para a célula mais à esquerda de Sipser
     f_out.write("ini 0 0 L ini\n")
     f_out.write("ini 1 1 L ini\n")
-    f_out.write("ini S S R 0I\n")
+    f_out.write("ini # # R 0I\n")
     f_out.write("\n")
 
 def initialize_Sipser(f_out):
     # Marca símbolo inicial
-    f_out.write("0 0 S R sr0\n")
-    f_out.write("0 1 S R sr1\n")
-    f_out.write("0 _ S R mf\n")
+    f_out.write("0 0 # R sr0\n")
+    f_out.write("0 1 # R sr1\n")
+    f_out.write("0 _ # R mf\n")
     f_out.write("\n")
     
     # Shift Right de zeros
@@ -45,12 +45,12 @@ def initialize_Sipser(f_out):
     f_out.write("sr1 _ 1 R mf\n")
     f_out.write("\n")
     
-    f_out.write("mf _ F L ini\n")
+    f_out.write("mf _ & L ini\n")
     
     # Volta o cabeçote para a célula mais à esquerda de Sipser
     f_out.write("ini 0 0 L ini\n")
     f_out.write("ini 1 1 L ini\n")
-    f_out.write("ini S S R 0S\n")
+    f_out.write("ini # # R 0S\n")
     f_out.write("\n")
 
 def correcao_Sipser(f_out, estado):
@@ -58,37 +58,37 @@ def correcao_Sipser(f_out, estado):
     f_out.write(f"ltc_{estado} 0 _ R sr0_{estado}\n")
     f_out.write(f"ltc_{estado} 1 _ R sr1_{estado}\n")
     f_out.write(f"ltc_{estado} _ _ R sr__{estado}\n")
-    f_out.write(f"ltc_{estado} F _ R srF_{estado}\n")
+    f_out.write(f"ltc_{estado} & _ R srF_{estado}\n")
     
     # Shift Right de zeros
     f_out.write(f"\nsr0_{estado} 0 0 R sr0_{estado}\n")
     f_out.write(f"sr0_{estado} 1 0 R sr1_{estado}\n")
     f_out.write(f"sr0_{estado} _ 0 R sr__{estado}\n")
-    f_out.write(f"sr0_{estado} F 0 R srF_{estado}\n")
+    f_out.write(f"sr0_{estado} & 0 R srF_{estado}\n")
     
     # Shift Right de uns
     f_out.write(f"\nsr1_{estado} 0 1 R sr0_{estado}\n")
     f_out.write(f"sr1_{estado} 1 1 R sr1_{estado}\n")
     f_out.write(f"sr1_{estado} _ 1 R sr__{estado}\n")
-    f_out.write(f"sr1_{estado} F 1 R srF_{estado}\n")
+    f_out.write(f"sr1_{estado} & 1 R srF_{estado}\n")
     
     # Shift Right de _
     f_out.write(f"\nsr__{estado} 0 _ R sr0_{estado}\n")
     f_out.write(f"sr__{estado} 1 _ R sr1_{estado}\n")
     f_out.write(f"sr__{estado} _ _ R sr__{estado}\n")
-    f_out.write(f"sr__{estado} F _ R srF_{estado}\n")
+    f_out.write(f"sr__{estado} & _ R srF_{estado}\n")
     
     # Shift Right de F
-    f_out.write(f"\nsrF_{estado} _ F L ini_{estado}\n")
+    f_out.write(f"\nsrF_{estado} _ & L ini_{estado}\n")
     
     # Corrigir o cabeçote
     f_out.write(f"\nini_{estado} _ _ L ini_{estado}\n")
     f_out.write(f"ini_{estado} 0 0 L ini_{estado}\n")
     f_out.write(f"ini_{estado} 1 1 L ini_{estado}\n")
-    f_out.write(f"ini_{estado} S S R {estado}S\n")
+    f_out.write(f"ini_{estado} # # R {estado}S\n")
     
     # Correção da fita à direita
-    f_out.write(f"\nrtc_{estado} _ F L {estado}S\n")
+    f_out.write(f"\nrtc_{estado} _ & L {estado}S\n")
 
 def copy_Sipser_to_DInf(f_in, estadosVisitados, estadosAVisitar, f_out):
     for line in f_in.readlines():
@@ -104,7 +104,7 @@ def copy_Sipser_to_DInf(f_in, estadosVisitados, estadosAVisitar, f_out):
                 estadosVisitados.append(estados[0])
                 
                 # Transição para simular a mola
-                f_out.write(f"{estados[0]}I S S R {estados[0]}I\n")
+                f_out.write(f"{estados[0]}I # # R {estados[0]}I\n")
                 
                 if ("halt" not in estados[4]) and ("halt-accept" not in estados[4]):
                     estadosAVisitar.append(estados[4])
@@ -135,8 +135,8 @@ def copy_DInf_to_Sipser(f_in, estadosVisitados, estadosAVisitar, f_out):
                 estadosVisitados.append(estados[0])
                 
                 # Mandar para o estado de correção da fita para esquerda e para a direita
-                f_out.write(f"{estados[0]}S S S R ltc_{estados[0]}\n")
-                f_out.write(f"{estados[0]}S F _ R rtc_{estados[0]}\n")
+                f_out.write(f"{estados[0]}S # # R ltc_{estados[0]}\n")
+                f_out.write(f"{estados[0]}S & _ R rtc_{estados[0]}\n")
                 
                 if ("halt" not in estados[4]) and ("halt-accept" not in estados[4]):
                     estadosAVisitar.append(estados[4])
