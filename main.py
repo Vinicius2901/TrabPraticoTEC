@@ -154,7 +154,7 @@ def copy_DInf_to_Sipser(f_in, estadosVisitados, estadosAVisitar, f_out):
         f_out.write("\n")
 
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
+    if len(sys.argv) > 1 and len(sys.argv) < 3:
         TM_Path = sys.argv[1]
     else:
         raise Exception("Nome do arquivo da máquina que será traduzido deve ser colocado como argumento da execução")
@@ -177,7 +177,7 @@ if __name__ == "__main__":
                 idx_si = verifica_MT.index("I")
 
             if(len(verifica_MT) > 2):
-                raise Exception("Primeira linha deve conter apenas ';' e 'S' ou ';' e 'T' seguidos")
+                raise Exception("Primeira linha deve conter apenas ';' e 'S' ou ';' e 'I' seguidos")
             elif ";S" in linha or ((idx_pv < idx_si) and "S" in linha):
                 initialize_DInf(f_out)
                 estadosVisitados = []
@@ -202,4 +202,4 @@ if __name__ == "__main__":
                     if estado not in estadosVisitados:
                         correcao_Sipser(f_out, estado)
             else:
-                raise Exception("Primeira linha deve conter apenas ';' e 'S' ou ';' e 'T' seguidos")
+                raise Exception("Primeira linha deve conter apenas ';' e 'S' ou ';' e 'I' seguidos")
