@@ -154,7 +154,10 @@ def copy_DInf_to_Sipser(f_in, estadosVisitados, estadosAVisitar, f_out):
         f_out.write("\n")
 
 if __name__ == "__main__":
-    TM_Path = sys.argv[1]
+    if len(sys.argv) > 2:
+        TM_Path = sys.argv[1]
+    else:
+        raise Exception("Nome do arquivo da máquina que será traduzido deve ser colocado como argumento da execução")
     TM_Trans_Path = "TM_Translated.txt"
     with open(TM_Path, "r") as f_in:
         linha = f_in.readline()
