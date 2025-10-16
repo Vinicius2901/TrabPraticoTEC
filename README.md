@@ -7,7 +7,7 @@ O código foi desenvolvido utilizando a versão 3.12.3 do interpretador Python n
 
 Não é necessário criar ou utilizar um ambiente virtual Python para executar o código, uma vez que não se precisa de módulos adicionais além dos que já são inclusos ao baixar o interpretador Python (os e sys).
 
-Para executar o código, basta digitar "python3 main.py <nomeDoArquivo.ext> (ext significa extensão do arquivo).
+Para executar o código, basta digitar "python3 main.py <nomeDoArquivo.ext>" no terminal (ext significa extensão do arquivo).
 
 O arquivo de saída da execução terá o nome de "TM_Translated.txt".
 
