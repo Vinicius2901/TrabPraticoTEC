@@ -1,5 +1,5 @@
 Trabalho prático desenvolvido por Felipe Godinho Dal Molin e Vinícius Giroti para a matéria de Teoria da Computação (TEC0001) da Universidade de Santa Catarina (UDESC).
-O trabalho tem como objetivo realizar um simulador do modelo de Máquina de Turing de Sipser para o modelo de Máquina de Turing com Fita Duplamente Infinita, assim como uma simulação do modelo de Máquina de Turing com Fita Duplamente Infinita para o modelo de Máquina de Turing de Sipser.
+O trabalho tem como objetivo realizar um simulador do modelo de Máquina de Turing de Sipser para o modelo de Máquina de Turing com Fita Duplamente Infinita, assim como um simulador do modelo de Máquina de Turing com Fita Duplamente Infinita para o modelo de Máquina de Turing de Sipser.
 
 Para baixar o código, basta baixar o repositório e extraí-lo na pasta de seu interesse.
 
