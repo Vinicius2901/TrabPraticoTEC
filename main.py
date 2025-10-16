@@ -186,7 +186,7 @@ if __name__ == "__main__":
                 for estado in estadosAVisitar:
                     estado = estado.replace("\n", "")
                     if estado not in estadosVisitados:
-                        f_out.write(f"\n{estado}I S S R {estado}I\n")
+                        f_out.write(f"\n{estado}I # # R {estado}I\n")
         
             elif ";I" in linha or ((idx_pv < idx_si) and "I" in linha):
                 initialize_Sipser(f_out)
