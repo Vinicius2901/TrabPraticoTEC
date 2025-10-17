@@ -7,7 +7,9 @@ O código foi desenvolvido utilizando a versão 3.12.3 do interpretador Python n
 
 Não é necessário criar ou utilizar um ambiente virtual Python para executar o código, uma vez que não se precisa de módulos adicionais além dos que já são inclusos ao baixar o interpretador Python (os e sys).
 
-Para executar o código, basta digitar "python3 main.py <nomeDoArquivo.ext>" no terminal (ext significa extensão do arquivo).
+A primeira linha do arquivo de entrada deve conter ";S" ou ";I" apenas. ;S indica que a máquina de entrada é uma máquina de Sipser que será simulada por uma máquina com fita duplamente infinita. Já ;I indica que a máquina de entrada é uma máquina com fita duplamente infinita que será simulada por uma máquina de Sipser.
+
+Para executar o código, basta digitar "python3 main.py <nomeDoArquivo.ext>" no terminal (nomeDoArquivo indica o nome do arquivo com a Máquina de Turing de entrada e ext significa extensão do arquivo).
 
 O arquivo de saída da execução terá o nome de "TM_Translated.txt".
 
